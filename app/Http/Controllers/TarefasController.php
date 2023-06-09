@@ -24,25 +24,12 @@ class TarefasController extends Controller
      */
     public function index()
     {
-        $data = $this->tarefaService->where('id_usuario', auth()->user()->id);
-
-        if ( $data->isEmpty() ) 
-        {
-            return response()->json('Nenhuma tarefa cadastrada para esse usuário.', 404);
-        }
-
-        return response()->json(TarefasResource::collection($data), 201);
+        return response()->json(TarefasResource::collection($this->tarefaService->index()), 201);
     }
 
     /**
      * Show the form for creating a new resource.
      */
-
-     // TODO: método para criar uma tarefa usando LARAVEL, a tarefa deve ter os campos: titulo,descrição,status,data de entrega, id projeto e id usuário
-    public function create()
-    {
-        
-    }
 
     /**
      * Store a newly created resource in storage.

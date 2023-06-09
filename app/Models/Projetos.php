@@ -34,7 +34,7 @@ class Projetos extends Model
 
         
         static::creating(function($model) {
-            $model->id_usuario = Auth::id();
+            $model->id_usuario == null ?? Auth::id();
 
             Cache::forget('projetos');
         });
